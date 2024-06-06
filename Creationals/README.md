@@ -1,3 +1,27 @@
+# SINGLETON
+
+El patrón Singleton es un patrón de diseño creacional que garantiza que una clase tenga solo una instancia y proporciona un punto de acceso global a esta instancia. Esto significa que no importa cuántas veces se solicite la creación de un objeto de esa clase, siempre se devuelve la misma instancia.
+
+**Características:**
+
+- **Única instancia:** Garantiza que solo haya una instancia de la clase en todo el programa.
+- **Acceso global:** Proporciona un punto de acceso global a la instancia única de la clase.
+- **Inicialización diferida:** La instancia única se crea solo cuando es solicitada por primera vez, lo que mejora la eficiencia al evitar la creación anticipada de objetos.
+- **Control sobre la creación de instancias:** El patrón Singleton controla la creación y acceso a la única instancia de la clase, evitando que los clientes creen instancias adicionales.
+- **Gestión de recursos compartidos:** Útil cuando necesitas gestionar recursos compartidos, como conexiones a la base de datos o archivos, de manera que se evite la duplicación de recursos y se mantenga la consistencia en su uso.
+
+
+## Extras:
+Una de las aplicacion mas cotidianas del patron singleton es para gestionar la conexion a base de datos en una app.
+
+1. **Uso concurrente de la conexión a la base de datos**: El patrón Singleton no afecta la disponibilidad de la conexión a la base de datos para varias solicitudes concurrentes. Cuando múltiples partes de la aplicación necesitan acceder a la base de datos al mismo tiempo, la única instancia Singleton manejará estas solicitudes concurrentes de manera transparente. La conexión a la base de datos generalmente está diseñada para ser utilizada por múltiples clientes simultáneamente, por lo que el Singleton no tiene que esperar a que una solicitud termine antes de atender a otra. Cada solicitud que requiera acceso a la base de datos simplemente utiliza la misma instancia Singleton para realizar la operación necesaria. Sin embargo, es importante asegurarse de que la implementación de la conexión a la base de datos sea segura y que maneje adecuadamente la concurrencia para evitar problemas como condiciones de carrera o bloqueos.
+    
+2. **Cierre de la conexión**: En muchos casos, el Singleton no cierra la conexión a la base de datos. La idea es mantener la conexión abierta para evitar el costo asociado con la apertura y cierre repetidos de la conexión. Sin embargo, dependiendo de la implementación y los requisitos específicos de la aplicación, puede ser necesario implementar lógica adicional para administrar el ciclo de vida de la conexión, como cerrar la conexión después de un período de inactividad o cuando la aplicación se apaga.
+    
+3. **Costo de mantener la conexión abierta**: Mantener la conexión abierta puede consumir recursos, como memoria y recursos del servidor de base de datos. Es importante encontrar un equilibrio entre el rendimiento y la eficiencia de recursos. En aplicaciones de alta concurrencia o en entornos donde los recursos son limitados, puede ser necesario implementar mecanismos para administrar la cantidad de conexiones abiertas, como establecer límites en el número máximo de conexiones o implementar la liberación de conexiones inactivas después de un tiempo determinado. Esto puede ayudar a mitigar el impacto en los recursos del sistema y garantizar un funcionamiento óptimo de la aplicación.
+
+
+# **BUILDER**
 
 Se puede identificar la necesidad de usar el patrón Builder en las siguientes situaciones:
 
