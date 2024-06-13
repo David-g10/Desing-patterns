@@ -1,5 +1,6 @@
 
-# Concepto importante por que es a partir de este que funcionan los decoradores!.
+# Concepto importante por que es a partir de este que funcionan los decoradores!. 
+# OJO: no el patron de diseno decorador sino los decoradores nativos de python. que son cosas distintas.
 
 
 """
