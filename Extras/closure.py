@@ -28,9 +28,11 @@ if __name__ == '__main__':
     print(p1(2))  # Verificamos que el estado se mantiene entre llamadas
 
 
-    p2 = add_new_numbers() # Verificamos que el estado se mantiene para la nueva instancia
-    print(p1(3))  
-    print(p1(4))  
-    print(p1(5))  
-    print(p1(5))  
+    p2 = add_new_numbers() # Verificamos que el estado es independiente por cada instacia creada.
+    print(p2(3))  
+    print(p2(4))  
+    print(p2(5))  
+    print(p2(5)) 
+
+    print(p1(10))
 

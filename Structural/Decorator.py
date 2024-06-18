@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import TypeVar
 
 # La interfaz de componente: define operaciones que los
 # decoradores pueden alterar.
@@ -19,9 +20,15 @@ class EmailNotifier(Notifier):
         print("se envia notificacion")
         return "Default notificacion"
 
+# Variable de tipo para representar el tipo base (puede ser cualquier subclase de Notifier)
+BaseNotifier = TypeVar('BaseNotifier', bound=Notifier)
+
 # Decorador
 class NotificationType(Notifier):
-    def __init__(self, base) -> None:
+    def __init__(self, base: BaseNotifier) -> None:
+        # Verificación de tipo del objeto base usando isinstance
+        if not isinstance(base, Notifier):
+            raise TypeError("El objeto base debe ser una subclase de Notifier")
         self.base = base
 
 
@@ -40,10 +47,16 @@ class WPPDecorator(NotificationType):
         print("Se envia WPP")
         return self.base.sendMessage()
     
+class NoisyClass():
+    pass
+    
 
 if __name__ == '__main__':
 
+    noisy_obj = NoisyClass()
     notifier_base = EmailNotifier()
+    # wpp_notifier = SMSDecorator(noisy_obj)
     sms_notifier = SMSDecorator(notifier_base)
     wpp_notifier = WPPDecorator(sms_notifier)
     wpp_notifier.sendMessage()
+    # wpp_notifier = WPPDecorator(noisy_obj)
